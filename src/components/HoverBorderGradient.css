@@ -1,0 +1,92 @@
+/* src/components/MovingBorderButton.css */
+
+/* src/components/HoverBorderGradient.css */
+.hbg-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+  border-radius: 999px;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: background-color 0.5s;
+  overflow: hidden;
+  text-decoration: none;
+  border: none;
+  width: fit-content; /* <-- Perbaikan di sini */
+  cursor: pointer;
+}
+
+.hbg-container:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.hbg-content {
+  width: auto;
+  color: white;
+  background-color: #1B1B1B;
+  padding: 0.75rem 1.5rem;
+  border-radius: inherit;
+  z-index: 10;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.hbg-glow {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+.hbg-backdrop {
+  position: absolute;
+  inset: 2px;
+  background-color: #1B1B1B;
+  border-radius: 999px;
+  z-index: 1;
+}
+
+.mv-container {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  padding: 1px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.mv-inset {
+  position: absolute;
+  inset: 0;
+}
+
+.mv-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.mv-border-glow {
+  width: 150px;
+  height: 150px;
+  opacity: 0.8;
+  /* Warna diubah menjadi biru */
+  background-image: radial-gradient(#3275F8 40%, transparent 60%);
+}
+
+.mv-content {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: #1B1B1B;
+  border: 1px solid #333;
+  color: white;
+  padding: 0.75rem 1.5rem; /* Menyesuaikan padding dari btn-primary */
+}

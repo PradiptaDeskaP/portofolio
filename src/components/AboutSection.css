@@ -1,0 +1,195 @@
+/* src/components/AboutSection.css */
+
+/* Layout Utama dengan CSS Grid */
+.about-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      ".    title   ."
+      "intro  image   details"
+      "main   image   details"
+      "main   image   .";
+    gap: 1rem 2rem;
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 4rem auto;
+    color: #1B1B1B;
+}
+
+/* Penempatan Setiap Elemen pada Grid */
+.about-title-wrapper { grid-area: title; text-align: center; margin-bottom: 2rem; }
+.about-intro         { grid-area: intro; }
+.about-image-wrapper { grid-area: image; }
+.about-main-content  { grid-area: main; }
+.about-details       { grid-area: details; }
+
+
+/* === PERBAIKAN FINAL UNTUK GAMBAR & BINGKAI === */
+
+/* Wadah untuk menumpuk gambar */
+.about-image-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+}
+
+/* DIV untuk foto orang (lapisan bawah) */
+.about-image-person {
+    position: absolute;
+    /* Posisikan dan ukur agar sedikit lebih kecil dari bingkai */
+    top: 5%;
+    left: 8%;
+    width: 84%;
+    height: 85%;
+    
+    /* Jadikan foto sebagai background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    z-index: 1;
+}
+
+/* Gambar Bingkai (Lapisan Atas) */
+.about-image-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 2;
+    pointer-events: none;
+}
+/* ================================================== */
+
+
+/* Gaya untuk Judul dengan Aksen Sudut */
+.corner-accent-box {
+    position: relative;
+    padding: 0.5rem;
+    display: inline-block;
+}
+
+.corner-accent-box::before,
+.corner-accent-box::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-color: #c0c0c0;
+    border-style: solid;
+}
+
+.corner-accent-box::before {
+    top: 0;
+    left: 0;
+    border-width: 2px 0 0 2px;
+}
+
+.corner-accent-box::after {
+    bottom: 0;
+    right: 0;
+    border-width: 0 2px 2px 0;
+}
+
+.corner-accent-box h4 {
+    font-size: 2.0rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Tipografi dan Tombol */
+.about-main-content h2 {
+    font-size: 2.0rem;
+    margin: 0;
+}
+
+.about-main-content p, .about-intro p, .about-details p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.about-details p {
+    margin-bottom: 1.5rem;
+}
+
+.btn-start-project {
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.8rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #1B1B1B;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-start-project:hover {
+    background-color: #333;
+}
+
+.read-more-link {
+    color: #1B1B1B;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+
+/* === KODE BARU UNTUK LOGO TEKNOLOGI === */
+.expertise-logos {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* Jarak antar logo */
+    margin-top: 2rem; /* Jarak dari teks di atasnya */
+    margin-bottom: 1.5rem;
+  }
+  
+  .logo-wrapper {
+    position: relative; /* Untuk memposisikan pop-up */
+    display: flex;
+  }
+  
+  .expertise-logo {
+    height: 40px; /* Ukuran tinggi logo */
+    width: auto;
+    opacity: 0.6;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+  }
+  
+  .logo-wrapper:hover .expertise-logo {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: translateY(-4px);
+  }
+  
+  .logo-popup {
+    position: absolute;
+    bottom: 100%; /* Posisikan di atas logo */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px); /* Posisi awal */
+    
+    background-color: #1B1B1B;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  .logo-wrapper:hover .logo-popup {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px); /* Muncul ke atas */
+  }
+  

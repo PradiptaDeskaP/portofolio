@@ -1,0 +1,58 @@
+/* src/App.css */
+
+.page-content {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fcf5fe;
+  
+}
+
+.content {
+  padding: 40px;
+  text-align: center;
+}
+
+/* src/App.css */
+
+/* Gaya untuk Pointer yang Mengikuti Mouse */
+.following-pointer {
+  position: fixed; /* Tetap di layar meskipun di-scroll */
+  /* Posisikan ujung kiri atas div tepat di ujung mouse */
+  transform: translate(-50%, -50%);
+  z-index: 9999; /* Pastikan selalu di paling atas */
+  pointer-events: none; /* Penting! Agar tidak menghalangi klik pada elemen di bawahnya */
+  transition: opacity 0.2s;
+}
+
+.pointer-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Jarak antara avatar dan teks */
+  background-color: #0099ff; /* Warna biru seperti di contoh */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 999px; /* Membuatnya berbentuk pil */
+  white-space: nowrap; /* Mencegah teks turun baris */
+  box-shadow: 0 4px 15px rgba(0, 153, 255, 0.4);
+}
+
+.pointer-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.pointer-text {
+  margin: 0;
+  font-weight: 500;
+}

@@ -1,0 +1,269 @@
+/* Layout Utama */
+.hero-container {
+    color: #333; /* Warna teks default untuk section ini */
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-main-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+/* Wadah untuk teks yang akan ber-animasi */
+.flipping-text-container {
+    transition: transform 0.5s, opacity 0.4s;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+}
+
+/* State saat animasi flip terjadi */
+.flipping-text-container.flipping {
+    transform: rotateX(90deg); /* Memutar elemen 90 derajat */
+    opacity: 0;
+}
+
+/* Sesuaikan styling h1 dan p agar tidak terpengaruh oleh wrapper baru */
+.flipping-text-container h1 {
+    font-size: 3.0rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.flipping-text-container .hero-description {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 500px;
+    margin: 1.5rem 0 2.5rem 0;
+}
+
+.hero-text-content {
+    flex: 1;
+    perspective: 1000px;
+}
+
+/* Konten Teks di Kiri */
+.intro-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+}
+
+.intro-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.role-tag {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.hero-text-content h1 {
+    font-size: 4rem;
+    margin: 0 0 1rem 0;
+    line-height: 1.1;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 500px;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid #333;
+    border-radius: 999px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #333;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #555;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background-color: #f0f0f0;
+}
+
+/* Kontainer Gambar di Kanan (Efek Khusus) */
+.hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex flex-start;
+    /* Bentuk unik dengan clip-path */
+    margin-top: 2rem;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 15% 50%);
+}
+
+.hero-main-image {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    /* Filter warna biru seperti di contoh */
+    filter: grayscale(1) contrast(1) brightness(1.2) sepia(1) hue-rotate(180deg) saturate(5);
+}
+
+/* Konten Bawah: Kartu dan Statistik */
+.bottom-content {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding: 0 1rem;
+    justify-content: space-between;
+}
+.tools-section {
+    display: flex;
+    flex-direction: column; /* <-- Kunci: Mengatur item ke bawah */
+    align-items: center; /* Rata kiri */
+    gap: 1rem; /* Jarak antara judul dan logo */
+}
+
+
+.bottom-content-title {
+    font-weight: 500;
+    color: #555;
+    font-size: 1rem;
+    text-align: center;
+}
+.expertise-logos {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.expertise-cards {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-start;
+}
+/* GANTI TOTAL RULE INI */
+.expertise-card {
+    position: relative; /* Diperlukan untuk positioning pseudo-elements */
+    padding: 1.5rem 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  /* TAMBAHKAN KODE INI UNTUK MEMBUAT SUDUT */
+  .expertise-card::before,
+  .expertise-card::after {
+    content: '';
+    position: absolute;
+    width: 20px; /* Lebar garis sudut */
+    height: 20px; /* Tinggi garis sudut */
+    border-color: #a0a0a0; /* Warna garis sudut */
+    border-style: solid;
+    transition: all 0.3s ease;
+  }
+  
+  /* Sudut atas-kiri */
+  .expertise-card::before {
+    top: 0;
+    left: 0;
+    border-width: 2px 0 0 2px;
+  }
+  
+  /* Sudut bawah-kanan */
+  .expertise-card::after {
+    bottom: 0;
+    right: 0;
+    border-width: 0 2px 2px 0;
+  }
+  
+  /* Efek hover (opsional, tapi disarankan) */
+  .expertise-card:hover::before,
+  .expertise-card:hover::after {
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    border-color: #1B1B1B;
+  }
+  
+  /* GANTI TOTAL RULE INI */
+  .expertise-card h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  /* HAPUS RULE UNTUK .card-header DAN .expertise-card p */
+
+.card-header {
+    border: 1px solid #e0e0e0;
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+
+
+.experience-snapshot {
+    text-align: center;
+}
+
+.snapshot-title {
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1rem;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+}

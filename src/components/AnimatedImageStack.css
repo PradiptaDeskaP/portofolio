@@ -1,0 +1,27 @@
+/* src/components/AnimatedImageStack.css */
+
+.image-stack-container {
+    position: relative;
+    width: 300px; /* Lebar container */
+    height: 300px; /* Tinggi container */
+    perspective: 1000px; /* Efek 3D */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .image-card {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    border-radius: 1.5rem; /* Sudut melengkung */
+    overflow: hidden;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }

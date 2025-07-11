@@ -1,0 +1,185 @@
+/* src/components/ProjectsSection.css */
+
+/* Layout Utama Section */
+.projects-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projects-title {
+    text-align: center;
+    font-size: 2.0rem;
+    margin-bottom: 2rem;
+    color: #1B1B1B;
+}
+
+/* Grid untuk Kartu Proyek */
+.projects-grid {
+    display: grid;
+    /* Membuat 2 kolom dengan lebar yang sama */
+    grid-template-columns: 1fr;
+    gap: 1rem; /* Jarak antar kartu bisa sedikit dikurangi */
+}
+
+/* GAYA KARTU DIUBAH TOTAL */
+.project-card {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Mengatur item secara vertikal */
+    text-decoration: none; /* Menghapus garis bawah dari link */
+    background-color: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Gaya untuk Pop-up Tag */
+.project-popup-tag {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    
+    /* Posisikan di atas kartu dan tengahkan */
+    transform: translate(-50%, -50%);
+    
+    background-color: #1B1B1B; /* Warna off-black */
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 999px; /* Bentuk pil */
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap; /* Agar teks tidak turun baris */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+    /* Sembunyikan secara default */
+    opacity: 0;
+    visibility: hidden;
+    
+    /* Animasi transisi */
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
+}
+
+/* Munculkan Pop-up saat kartu di-hover */
+.project-card:hover .project-popup-tag {
+    opacity: 1;
+    visibility: visible;
+    /* Efek muncul sedikit ke atas */
+    transform: translate(-50%, -120%);
+}
+
+
+.project-card:hover {
+    transform: translateY(-5px); /* Efek terangkat saat hover */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* WADAH GAMBAR BARU */
+.image-container {
+    position: relative;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .card-image {
+    transform: scale(1.05); /* Sedikit zoom pada gambar saat hover */
+}
+
+/* INFO PROYEK DI BAWAH GAMBAR */
+.project-info {
+    padding: 1rem 1.25rem;
+    text-align: left;
+}
+
+.project-category {
+    display: block;
+    font-size: 0.8rem;
+    color: #667085; /* Warna abu-abu yang lebih lembut */
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.project-title {
+    font-size: 1.1rem;
+    color: #101828; /* Warna teks lebih gelap */
+    font-weight: 600;
+    margin: 0;
+}
+
+
+/* Efek Hover (Overlay & Tombol) */
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(27, 27, 27, 0.5);
+    opacity: 0; /* Sembunyikan overlay secara default */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.project-card:hover .card-overlay {
+    opacity: 1; /* Munculkan overlay saat kartu di-hover */
+}
+
+.card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.view-project-button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1.2rem;
+    background-color: white;
+    color: #1B1B1B;
+    border-radius: 999px;
+    font-weight: 500;
+    transform: scale(0.9); /* Sedikit kecil secara default */
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.project-card:hover .view-project-button {
+    transform: scale(1); /* Membesar saat hover */
+    opacity: 1;
+}
+
+.arrow-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    background-color: #1B1B1B;
+    color: white;
+    border-radius: 50%;
+}
+
+/* Terapkan 2 kolom hanya untuk layar yang lebih besar (tablet ke atas) */
+@media (min-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* 3 kolom untuk layar desktop */
+@media (min-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

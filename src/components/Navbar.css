@@ -1,0 +1,172 @@
+/* Definisi animasi tetap sama, tidak perlu diubah */
+@keyframes fluidGrow {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes rotate-gradient {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Container utama navbar */
+.navbar-container {
+  position: sticky;
+  top: 0.7rem;
+  z-index: 1000;
+  width: 100%;
+  padding: 0 2rem;
+  /* Efek liquid glass */
+  /* Latar belakang lebih solid dengan sedikit transparansi */
+
+  transition: top 1.5s ease;
+}
+
+/* Konten di dalam navbar, ini yang kita animasikan */
+.navbar-content {
+  display: flex;
+  /* Menggunakan Flexbox untuk layout */
+  justify-content: space-between;
+  /* Menyebar elemen: kiri, tengah, kanan */
+  align-items: center;
+  /* Menyejajarkan elemen secara vertikal */
+  max-width: 1200px;
+  /* Lebar maksimal konten */
+  margin: 0 auto;
+  /* Posisi di tengah halaman */
+  padding: 0.5rem 1rem;
+  /* Jarak atas/bawah dan kiri/kanan */
+
+  /* === Glassmorphism Effect === */
+
+  /* Warna dasar kaca yang sedikit gelap */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  /* Bayangan agar terangkat */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 15px;
+  /* Sudut melengkung */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(20px) saturate(1.5);
+  /* Pinggiran kaca bercahaya */
+
+  /* Menerapkan animasi yang sama */
+  animation: fluidGrow 3.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transition: background 0.4s ease, border-color 0.4s ease, padding 0.4s ease,
+    backdrop-filter 0.4s ease, max-width 0.4s ease, justify-content 0.4s ease;
+}
+
+/* === Gaya BARU saat di-scroll === */
+.navbar-content.scrolled {
+  padding: 0.5rem 1.5rem;
+  /* Padding sedikit lebih rapat */
+
+  border-color: transparent;
+  /* Hilangkan border kaca */
+  backdrop-filter: none;
+  /* Hilangkan blur */
+  max-width: fit-content; /* <-- Navbar diperpendek menjadi 900px saat di-scroll */
+  gap: 2.5rem; /* <-- Beri jarak antar item yang tersisa */
+  justify-content: flex-start;
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ================================ */
+/* Styling untuk Logo */
+.logo {
+  width: 48px; /* Sedikit lebih besar untuk memberi ruang border */
+  height: 48px;
+  padding: 2px; /* Ketebalan border gradient */
+  border-radius: 50%;
+
+  position: relative; /* Diperlukan untuk animasi */
+
+  /* Transisi untuk menghilang saat scroll tetap ada */
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.7s 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.7s 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    margin 0.7s 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.7s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.logo::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  z-index: -1;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #ff0000,
+    #ffff00,
+    #00ff00,
+    #00ffff,
+    #0000ff,
+    #ff00ff,
+    #ff0000
+  );
+  /* Terapkan animasi putaran */
+  animation: rotate-gradient 4s linear infinite;
+}
+.logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  position: relative;
+  /* Border ini memisahkan gambar dari gradien yang berputar */
+  border: 3px solid rgb(20, 20, 25);
+}
+/* === Gaya BARU untuk menyembunyikan logo saat di-scroll === */
+.navbar-content.scrolled .logo {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0; /* Hilangkan margin agar tidak memakan tempat */
+  padding: 0;
+}
+/* ========================================================== */
+/* Styling untuk list link navigasi */
+.nav-links {
+  display: flex;
+  /* Membuat link berjajar horizontal */
+  list-style: none;
+  /* Menghilangkan bullet points */
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+  /* Jarak antar link */
+}
+
+.nav-links a {
+  text-decoration: none;
+  /* Menghilangkan garis bawah */
+  color: #a59696;
+  /* Warna teks gelap */
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  /* Transisi halus saat hover */
+}
+
+.nav-links a:hover {
+  color: #577ee7;
+  /* Warna saat mouse diarahkan */
+}
+
+/* === Setting Untuk responsive mobile === */
